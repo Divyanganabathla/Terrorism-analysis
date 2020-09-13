@@ -114,32 +114,45 @@ def open_browser():
 c1 = '#7ca4ea'# blue
 c2 = '#f0f8ff'#tab
 c3 = '#000000'# black 
+c4 = 	'#D3D3D3' #lightgrey
+c5 = '#A9A9A9' #darkgrey
 
 # Layout of the page
 def create_app8_ui():
   # for Creating the UI of the Webpage 
-  main_layout = html.Div( 
-      [
-  html.H1('Terrorism Analysis with Insights', id='Main_title' , style={'textAlign' : 'center' , 'color': c3 , 'fontsize' : '200px' }),
+  main_layout = html.Div( style = {'backgroundColor' : '#D3D3D3'}, children =
+      [html.Br(),
+        html.Br(),
+  html.H1('Terrorism Analysis with Insights', id='Main_title' , style={'textAlign' : 'center' , 'color': 'black' , 'fontsize' : '500' , 'font-weight' : 'bold' ,'height': '200px',
+  'line-height': '400px',
+  
+  'border': '2px dashed' ,
+ 'background-image' : 'url("https://image.shutterstock.com/z/stock-photo-london-england-march-newspaper-headlines-the-day-after-the-terrorist-attack-in-607155128.jpg")', 'height': '400px',
+   'width': '100%' })
+  ,html.Br(),
+  html.Br(),
+  
+ 
+ 
   dcc.Tabs(id="Tabs", value="Map",children=[
       dcc.Tab(label="Map tool" ,id="Map tool",value="Map", 
               style = {
                   'color' : c3, 
-                 'backgroundColor' : c1 },
+                 'backgroundColor' : c5 },
               children=[
           dcc.Tabs(id = "subtabs", value = "WorldMap",children = [
               dcc.Tab(label="World Map tool", id="World", value="WorldMap",
                       style = { 'color' : c3 , 
-                               'backgroundColor' : c1 },
+                               'backgroundColor' : c5 },
                       ),
               dcc.Tab(label="India Map tool", id="India", value="IndiaMap",
                       style = {'color' : c3 , 
-                               'backgroundColor' : c1},
+                               'backgroundColor' : c5},
                       )
               ]),
           dcc.Dropdown(
-              style = {'color' : c3 , 
-                               'backgroundColor' : c2},
+              style = {'color' : c3 
+                               },
               id='month', 
                 options=month_list,
                 placeholder='Select Month',
@@ -147,14 +160,14 @@ def create_app8_ui():
                   ),
           dcc.Dropdown(
                style = {'color' : c3 , 
-                               'backgroundColor' : c2},
+                               },
                 id='date', 
                 placeholder='Select Day',
                 multi = True
                   ),
           dcc.Dropdown(
                style = {'color' : c3 , 
-                               'backgroundColor' : c2},
+                              },
                 id='region-dropdown', 
                 options=region_list,
                 placeholder='Select Region',
@@ -162,7 +175,7 @@ def create_app8_ui():
                   ),
           dcc.Dropdown(
                style = {'color' : c3 , 
-                               'backgroundColor' : c2},
+                               },
                 id='country-dropdown', 
                 options=[{'label': 'All', 'value': 'All'}],
                 placeholder='Select Country',
@@ -170,7 +183,7 @@ def create_app8_ui():
                   ),
           dcc.Dropdown(
                style = {'color' : c3 , 
-                               'backgroundColor' : c2},
+                               },
                 id='state-dropdown', 
                 options=[{'label': 'All', 'value': 'All'}],
                 placeholder='Select State or Province',
@@ -178,7 +191,7 @@ def create_app8_ui():
                   ),
           dcc.Dropdown(
                style = {'color' : c3 , 
-                               'backgroundColor' : c2},
+                              },
                 id='city-dropdown', 
                 options=[{'label': 'All', 'value': 'All'}],
                 placeholder='Select City',
@@ -186,7 +199,7 @@ def create_app8_ui():
                   ),
           dcc.Dropdown(
                style = {'color' : c3 , 
-                               'backgroundColor' : c2},
+                               },
                 id='attacktype-dropdown', 
                 options=attack_type_list,#[{'label': 'All', 'value': 'All'}],
                 placeholder='Select Attack Type',
@@ -223,7 +236,7 @@ def create_app8_ui():
                     value=[min(year_list),max(year_list)],
                     marks=year_dict,
                     step=None
-                      ),
+                     ),
                   html.Br()
               ]),
          ]),
